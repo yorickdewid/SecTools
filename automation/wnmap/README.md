@@ -1,11 +1,16 @@
-About
-=====
+Description
+===========
 A shell script written with the purpose to automate and chain scans via nmap.
 You can run nmap with a custom mode written by user and create directories for
 every mode with the xml/nmap files inside.
 
-If you find some bugs or if you have any questions, ideas or criticism regarding
-to this section, feel free to message us.
+MD5
+===
+a75dab88bbf057f6cae49ca64ce8c51e
+
+Author
+======
+nrz
 
 Disclaimer
 ==========
