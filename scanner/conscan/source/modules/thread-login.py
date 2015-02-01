@@ -25,9 +25,8 @@ def brute(target, dir,ssl, user, wordlist):
                 data, status = client.http_post(target, dir + "index.php/login/do_login/", params)
 
             if status == 302:
-                print "\n", bold, "[+] Valid credentials found\r", normal
+                print "\n", bold, "[+] Validate credentials found\r", normal
                 print "", user + ":" + password
-                print status
                 break
 
     except Exception, error:

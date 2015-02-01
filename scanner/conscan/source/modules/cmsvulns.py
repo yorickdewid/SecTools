@@ -8,7 +8,7 @@ root = tree.getroot()
 bold = '\033[1m'
 normal = '\033[0m'
 
-## Checker
+## Module to list vulnerabilites against the version detected
 def vulncheck(version):
 
 	try:
