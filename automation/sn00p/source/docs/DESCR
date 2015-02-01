@@ -1,0 +1,7 @@
+sn00p is a modular tool written in bourne shell and designed to chain and
+automate security tools and tests. It parses target definitions from the command
+line and runs corresponding modules afterwards. sn00p can also parse a given nmap
+logfile for open tcp and udp ports. All results will be logged in specified
+directories and a report can subsequently be generated.
+
+this code is dedicated to my friend ZELJKO, who passed away (2nd Dec 2012).

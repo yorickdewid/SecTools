@@ -1,0 +1,125 @@
+#!/bin/sh
+################################################################################
+#                ____                     _ __                                 #
+#     ___  __ __/ / /__ ___ ______ ______(_) /___ __                           #
+#    / _ \/ // / / (_-</ -_) __/ // / __/ / __/ // /                           #
+#   /_//_/\_,_/_/_/___/\__/\__/\_,_/_/ /_/\__/\_, /                            #
+#                                            /___/ nullsecurity team           #
+#                                                                              #
+# sn00p - automates your toolchain for security tests                          #
+#                                                                              #
+# FILE                                                                         #
+# sn00p.sh                                                                     #
+#                                                                              #
+# DATE                                                                         #
+# 09/02/2012                                                                   #
+#                                                                              #
+# DESCRIPTION                                                                  #
+# sn00p is a modular tool written in bourne shell and designed to chain and    #
+# automate security tools and tests. It parses target definitions from the     #
+# command line and runs corresponding modules afterwards. sn00p can also parse #
+# a given nmap logfile for open tcp and udp ports. All results will be logged  #
+# in specified directories and a report can subsequently be generated.         #
+#                                                                              #
+# AUTHOR                                                                       #
+# noptrix - http://www.nullsecurity.net/                                       #
+#                                                                              #
+################################################################################
+
+
+# !!! change this to sn00p directory !!!
+SN00P_PATH="/home/noptrix/haxx/own/dev/sn00p"
+
+
+# source in files
+source_files()
+{
+    . "${SN00P_PATH}/src/core/global.sh"
+    . "${SN00P_PATH}/src/core/misc.sh"
+    . "${SN00P_PATH}/src/core/target.sh"
+    . "${SN00P_PATH}/src/core/check.sh"
+    . "${SN00P_PATH}/src/core/getopt.sh"
+    . "${SN00P_PATH}/src/core/parse.sh"
+    . "${SN00P_PATH}/src/core/module.sh"
+    . "${SN00P_PATH}/src/core/audit.sh"
+    . "${SN00P_PATH}/src/report/report.sh"
+    . "${SN00P_PATH}/src/report/css.sh"
+    . "${SN00P_PATH}/src/report/html.sh"
+    . "${SN00P_PATH}/src/report/txt.sh"
+
+    return ${SUCCESS}
+}
+
+
+# controller and flow of sn00p
+main()
+{
+    # first check if SN00P_PATH is set correctly
+    if [ ! -d "${SN00P_PATH}" ]
+    then
+        echo "[-] ERROR: adjust 'SN00P_PATH' in sn00p.sh first"
+        exit 31337
+    fi
+
+    # source in files, make several checks, include/exclude modules and audits
+    source_files
+    check_echo
+    banner
+    check_sed_version
+    parse_conf
+    get_opts "${@}"
+    check_argc "${@}"
+    check_args "${@}"
+    check_uid
+    check_timeout_cmd
+    check_sn00p_dir
+    make_sn00p_dir
+    include_module
+    exclude_module
+
+    if [ ${logfile} ]
+    then
+        check_logfile
+        parse_nmap_hosts
+    elif [ ${target_list} ]
+    then
+        make_table_list ${target_list}
+        parse_target_hosts
+    elif [ ${net_list} ]
+    then
+        make_table_list ${net_list}
+        parse_net_ifs
+    fi
+
+    # make host directories and port lists for host audit modes
+    make_host_dirs
+    make_port_list
+    make_net_dirs
+
+    # start audits here
+    if [ ! -z "${hosts}" ]
+    then
+        run_host_audits
+    fi
+    if [ ! -z "${urls}" ]
+    then
+        run_web_audits
+    fi
+    if [ ! -z  "${net_list}" ]
+    then
+        run_net_audits
+    fi
+
+    # create report and clean up
+    report
+    clean_up
+    msg "[*] game over"
+
+    return ${SUCCESS}
+}
+
+
+# we start here
+main "${@}"
+
+# EOF

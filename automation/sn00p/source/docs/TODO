@@ -1,0 +1,84 @@
+changelog and todo list for sn00p
+=================================
+
+===> 0.X
+    * new option: saving and restoring sn00p session ........................ []
+    * support 'all' value for '-i', '-I', '-x' and '-X' options ............. []
+    * new option: audit services on non-default ports ....................... []
+    * bugfix: 'include modules' procedure is wrong .......................... []
+    * add new/more modules and audits ....................................... []
+
+===> 0.8
+    * re-run, re-test core and modules .................................. [DONE]
+    * new option: add text report style support ......................... [DONE]
+    * replace _print_error() with error(), warn() etc. .................. [DONE]
+    * man page: update and add '-c' option .............................. [DONE]
+    * new option: check for installed tools ............................. [DONE]
+    * bugfix: nmap relative path file check ............................. [DONE]
+    * status for 'how many targets left' ................................ [DONE]
+    * deleted trailing whitespaces ...................................... [DONE]
+    * output of tools '->' instead of '-->' ............................. [DONE]
+
+===> 0.7
+    * 21.sh: deactivated ncftp anonymous login try ...................... [DONE]
+    * bugfix: added tcp and udp to modes in reports ..................... [DONE]
+
+===> 0.6
+    * update manpage .................................................... [DONE]
+    * re-test sn00p core functionality .................................. [DONE]
+    * retest sn00p and clean up ......................................... [DONE]
+    * replace 'timeout' with own timeout function ................... [CANCELED]
+    * new options: single username and single password .................. [DONE]
+    * build wlan based default example module / audit ................... [DONE]
+    * build lan based default example module / audit .................... [DONE]
+    * added '-o' flag for mode options .................................. [DONE]
+    * fix: exclude modules .............................................. [DONE]
+    * new options: host, service, webapp and lan mode extra options ..... [DONE]
+    * re-written filter_port_list (replaced awk/sed with egrep) ......... [DONE]
+    * print how many audits left while auditing (e.g. 1/10) ............. [DONE]
+    * add option: timeout for modules ................................... [DONE]
+    * change sn00p version numbering .................................... [DONE]
+    * re-test sn00p on many OS .......................................... [DONE]
+    * replace README with manpage ....................................... [DONE]
+    * change description for sn00p ...................................... [DONE]
+    * build webapp based modules / audits ............................... [DONE]
+    * fix awk issues for solaris based systems .......................... [DONE]
+    * fix '-t' option to delete duplicated 'run_audits' call ............ [DONE]
+    * update host/default.sh ............................................ [DONE]
+    * added report style option to sn00p.conf ........................... [DONE]
+    * add option: support for command line target list .................. [DONE]
+    * refactor sn00p.sh code ............................................ [DONE]
+    * changed usage output .............................................. [DONE]
+
+===> 0.5
+    * support nmap xml logfile format ................................... [DONE]
+    * support for -l host or -l tcp or -l udp ........................... [DONE]
+    * added IPsec/IKE module ............................................ [DONE]
+
+===> 0.4
+    * generate html report .............................................. [DONE]
+    * added: create tcp/ and udp/ dir for ports ......................... [DONE]
+    * added: various netbios / rpc tests ................................ [DONE]
+    * added: tftp module ................................................ [DONE]
+    * added: dns cache snoop test ....................................... [DONE]
+
+===> 0.3
+    * upgrade '-l' option (-l mod1,mod2 or -l all, etc.) ................ [DONE]
+    * exclude options (modules/tools) also in sn00p.conf ................ [DONE]
+    * option for 'include modules' ...................................... [DONE]
+    * option for 'include tools' ........................................ [DONE]
+    * build add_module option ........................................... [DONE]
+    * build make_module option .......................................... [DONE]
+    * upgrade README file ............................................... [DONE]
+    * comment the code .................................................. [DONE]
+    * change and adjust TODO file ....................................... [DONE]
+
+===> 0.2
+    * replaced getopt with getopts ...................................... [DONE]
+    * option for excluding tools ........................................ [DONE]
+    * option for excluding modules ...................................... [DONE]
+    * renamed auditx to sn00p ........................................... [DONE]
+    * code redesign ..................................................... [DONE]
+
+===> 0.1
+    * initial release ................................................... [DONE]
