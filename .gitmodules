@@ -1,3 +1,6 @@
 [submodule "keylogger/ixkeylog/source"]
 	path = keylogger/ixkeylog/source
 	url = https://github.com/dorneanu/ixkeylog
+[submodule "misc/netgrafio/source"]
+	path = misc/netgrafio/source
+	url = https://github.com/dorneanu/netgrafio
