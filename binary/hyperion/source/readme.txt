@@ -43,6 +43,9 @@
 #                                                                             #
 # CHANGELOG:                                                                  #
 #                                                                             #
+# v1.2:                                                                       #
+# - added windows 8 and 8.1 support (thx to CoolOppo)                         #
+#                                                                             #
 # v1.1:                                                                       #
 # - code cleanup and refactoring (more leightweighted and increased           #
 #   maintainability)                                                          #
