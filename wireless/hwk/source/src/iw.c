@@ -43,7 +43,7 @@ iw_get_txpower(char *devname)
 	int32_t sockfd = socket(AF_PACKET, SOCK_RAW, 0);
 	
     struct iwreq wrq;
-    strncpy(wrq.ifr_name, devname, sizeof(devname));
+    strncpy(wrq.ifr_name, devname, IFNAMSIZ);
     
     if( ioctl(sockfd, SIOCGIWTXPOW, &wrq) < 0) {
         return(-1);
@@ -78,7 +78,7 @@ iw_get_channel(char *devname)
 	
 	
     struct iwreq wrq;
-    strncpy(wrq.ifr_name, devname, sizeof(devname));
+    strncpy(wrq.ifr_name, devname, IFNAMSIZ);
     
     if( ioctl(sockfd, SIOCGIWFREQ, &wrq) < 0) {
         return(-1);
@@ -124,12 +124,14 @@ iw_set_channel(char *dev, int8_t channel)
     }
     
     struct iwreq *wrq = calloc(1, sizeof(struct iwreq));
-    strncpy(wrq->ifr_name, dev, 14);
     
+    
+    strncpy(wrq->ifr_name, dev, IFNAMSIZ);
     wrq->u.freq.m = channel;
 
     if( ioctl(sockfd, SIOCSIWFREQ, wrq) < 0) {
-		return(-1);
+		__WARNING("set_channel ioctl SIOCSIWFREQ failed");
+		printf("%s (this sometimes does not work with airmon-ng devices, try to set device to monitor mode manually (iwconfig)\n",strerror(errno));
     }
     
     free(wrq);
