@@ -40,7 +40,7 @@ def banner():
    || TheXero | thexero@nullsecurity.net                                     ||
    ||                                                                        ||
    || WEBSITE                                                                ||
-   || www.thexero.co.uk | www.nullsecurity.net                               ||
+   || www.nullsecurity.net                                                   ||
    ||                                                                        ||
    \\\\========================================================================//
    """
@@ -56,7 +56,6 @@ def arg_parser():
 	parser.add_argument('-e', action='store_true', help='Perform enumeration')
 	parser.add_argument('-u', dest='username', help='Username to login with')
 	parser.add_argument('-p', dest='wordlist', help='Path to wordlist')
-	parser.add_argument('--threads', dest='threads', help='Number of threads to be used for acount brute-force')
 
 	if len(sys.argv) == 1:
 		parser.print_help()
@@ -93,8 +92,7 @@ def arg_parser():
 	else:
         	enumerate = False
 	
-	bruteforce = False	
-	threads = 1
+	bruteforce = False
 	wordlist = ''
 	username = ''
 
@@ -104,22 +102,19 @@ def arg_parser():
 			wordlist = args.wordlist
 			bruteforce = True
 
-			if args.threads:
-				threads = int(args.threads)
-
 		else:
 			print "Path to wordlist needed to perform a bruteforce\n"
 	                parser.print_help()
 			sys.exit(1)		
 
-	return target, dir, ssl, enumerate, bruteforce, username, wordlist, threads
+	return target, dir, ssl, enumerate, bruteforce, username, wordlist
 
 
 ## Program startup
 if __name__ == '__main__':
 
 	banner()
-	target, dir, ssl, enumerate, bruteforce, username, wordlist, threads = arg_parser()
+	target, dir, ssl, enumerate, bruteforce, username, wordlist = arg_parser()
 
 	concrete.detect(target, dir, ssl)
 
@@ -129,6 +124,4 @@ if __name__ == '__main__':
 	if bruteforce == True:
                login.brute(target, dir, ssl, username, wordlist)		
 
-
 	sys.exit(0)
-
