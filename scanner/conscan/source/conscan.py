@@ -81,7 +81,7 @@ def arg_parser():
 
 		temp = temp[1:]
 
-		dir = ''
+		dir = '/'
 		for item in temp:
 			dir = dir + item + '/' 
 	else:

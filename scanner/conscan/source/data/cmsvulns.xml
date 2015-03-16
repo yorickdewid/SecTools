@@ -9,13 +9,16 @@
 		</vulnerability>
 	</concrete>
 
-	<concrete version="5.6.2.1">
+	<concrete version="5.7.0.4">
 		<vulnerability>
-			<title>Un-Authenticated SQL Injection</title>
+			<title>Stored XSS in concrete5 5.7.0.4</title>
 			<references>
-				<url>http://www.exploit-db.com/exploits/31735/</url>
+				<url>https://hackerone.com/reports/30019</url>
 			</references>
 		</vulnerability>
+	</concrete>
+
+	<concrete version="5.6.2.1">
 		<vulnerability>
 			<title>Multiple XSS</title>
 			<references>
