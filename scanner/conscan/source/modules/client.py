@@ -3,7 +3,7 @@
 ## client.py
 ## This file handle all http(s) network connectivity
 
-import httplib, sys, urllib
+import httplib, sys, urllib, wget
 
 
 ## Module for all get requests over https
@@ -74,3 +74,15 @@ def http_post(target, dir, params):
     except Exception, error:
         print error
 
+
+## Module to handle github updates
+def update():
+    try:
+
+	url = "https://raw.githubusercontent.com/nullsecuritynet/tools/master/scanner/conscan/source/data/cmsvulns.xml"
+
+	filename = urllib.urlretrieve (url, "data/cmsvulns.xml")
+
+    except Exception, error:
+	print error
+	sys.exit(1)	

@@ -52,16 +52,23 @@ def arg_parser():
 	parser = argparse.ArgumentParser(add_help=True,
 	epilog='Example: ./%(prog)s -t https://www.thexero.co.uk:8443/concrete/ -e')
 
-	parser.add_argument('-t', dest='target', help='Target IP / Domain', required='yes')
+	parser.add_argument('-t', dest='target', help='Target IP / Domain')#, required='yes')
 	parser.add_argument('-e', action='store_true', help='Perform enumeration')
 	parser.add_argument('-u', dest='username', help='Username to login with')
 	parser.add_argument('-p', dest='wordlist', help='Path to wordlist')
+	parser.add_argument('--update', action='store_true', help='Update vulnerabilities')
 
 	if len(sys.argv) == 1:
 		parser.print_help()
 		sys.exit(1)
 
 	args = parser.parse_args()
+	if args.update:
+		client.update()
+
+		print "Update successful!"
+		sys.exit(0)
+
 	target = args.target
 
 	if target.startswith("https://"):
