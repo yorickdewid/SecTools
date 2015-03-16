@@ -20,7 +20,6 @@ except Exception, error:
 	print error
 	sys.exit(1)
 
-
 ## Module used to print the banner
 def banner():
 
@@ -34,7 +33,7 @@ def banner():
    || concrete5 blackbox vulnerability scanner              	             ||
    ||                                                                        ||
    || VERSION                                                                ||
-   || 1.1                                                                    ||
+   || 1.2                                                                    ||
    ||                                                                        ||
    || AUTHOR                                                                 ||
    || TheXero | thexero@nullsecurity.net                                     ||
@@ -71,6 +70,9 @@ def arg_parser():
 
 	if not args.target:
 		parser.print_help()
+		#sys.quit(1)
+	
+	target = args.target	
 
 	if target.startswith("https://"):
 		ssl = True
