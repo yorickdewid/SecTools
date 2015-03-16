@@ -52,7 +52,7 @@ def arg_parser():
 	parser = argparse.ArgumentParser(add_help=True,
 	epilog='Example: ./%(prog)s -t https://www.thexero.co.uk:8443/concrete/ -e')
 
-	parser.add_argument('-t', dest='target', help='Target IP / Domain')#, required='yes')
+	parser.add_argument('-t', dest='target', help='Target IP / Domain')
 	parser.add_argument('-e', action='store_true', help='Perform enumeration')
 	parser.add_argument('-u', dest='username', help='Username to login with')
 	parser.add_argument('-p', dest='wordlist', help='Path to wordlist')
@@ -69,7 +69,8 @@ def arg_parser():
 		print "Update successful!"
 		sys.exit(0)
 
-	target = args.target
+	if not args.target:
+		parser.print_help()
 
 	if target.startswith("https://"):
 		ssl = True
