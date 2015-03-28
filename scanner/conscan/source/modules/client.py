@@ -3,7 +3,7 @@
 ## client.py
 ## This file handle all http(s) network connectivity
 
-import httplib, sys, urllib, wget
+import httplib, sys, urllib
 
 
 ## Module for all get requests over https

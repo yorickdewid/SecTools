@@ -49,7 +49,7 @@ def banner():
 def arg_parser():
 
 	parser = argparse.ArgumentParser(add_help=True,
-	epilog='Example: ./%(prog)s -t https://www.thexero.co.uk:8443/concrete/ -e')
+	epilog='Example: ./%(prog)s -t https://www.nullsecurity.net:8443/concrete/ -e')
 
 	parser.add_argument('-t', dest='target', help='Target IP / Domain')
 	parser.add_argument('-e', action='store_true', help='Perform enumeration')
@@ -70,7 +70,6 @@ def arg_parser():
 
 	if not args.target:
 		parser.print_help()
-		#sys.quit(1)
 	
 	target = args.target	
 
@@ -132,6 +131,6 @@ if __name__ == '__main__':
 		concrete.enumerate(target, dir, ssl)
 
 	if bruteforce == True:
-               login.brute(target, dir, ssl, username, wordlist)		
+		login.brute(target, dir, ssl, username, wordlist)		
 
 	sys.exit(0)
