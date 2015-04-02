@@ -4,3 +4,6 @@
 [submodule "misc/netgrafio/source"]
 	path = misc/netgrafio/source
 	url = https://github.com/dorneanu/netgrafio
+[submodule "scanner/smalisca/source"]
+	path = scanner/smalisca/source
+	url = https://github.com/dorneanu/smalisca
